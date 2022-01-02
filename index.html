@@ -32,7 +32,7 @@
         }
 
         function iLoveJCO() {
-            var fiveMinutes = 60 * 0.15,
+            var fiveMinutes = 60 * 15,
                 display = document.querySelector('#time');
             startTimer(fiveMinutes, display);
             document.getElementById('button-click').style.display = "none";
@@ -64,7 +64,7 @@
                     document.getElementById('input7').value = 'x';
                 }
             } else {
-                document.getElementById('location').innerHTML = `LOL is not a location, you fool!`;
+                document.getElementById('location').innerHTML = `PLEASE REFRESH THE PAGE`;
             }
         }
 
@@ -180,8 +180,7 @@
 <body>
     <div id="main">
         <span id="location">Please choose your location!</span>
-        <select name="mode" id="mode" onchange="checkMode()">
-            <option value="LOL" selected>LOL</option>
+        <select name="mode" id="mode" onclick="checkMode()">
             <option value="LT1">LT1</option>
             <option value="LT2">LT2</option>
             <option value="LT3">LT3</option>
