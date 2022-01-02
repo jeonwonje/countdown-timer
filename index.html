@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <script>
+        var buttonState = '';
+        var answer = '';
 
         function startTimer(duration, display) {
             var timer = duration, minutes, seconds;
@@ -24,8 +25,6 @@
                     window.alert("Time is up!");
                 }
             }, 1000);
-
-
         }
 
         function iLoveJCO() {
@@ -36,28 +35,113 @@
             document.getElementById('mode').style.display = "none";
         };
 
-
-        function getAnswer() {
-            var answer = '';
-            for (let i = 1; i < 17; i++) {
-                //   console.log(i);
-
-                answer += document.getElementById(`input${i}`).value;
-            }
-            //console.log(document.getElementById(`input1`).value)
-            console.log(answer)
-        }
-
         function checkMode() {
-            let buttonState = document.getElementById('mode').value;
+            document.getElementById('button-click').style.display = "inline-block";
+            buttonState = document.getElementById('mode').value;
             console.log(buttonState);
 
             if (buttonState !== "LOL") {
                 document.getElementById('location').innerHTML = `Your location : ${buttonState}`;
+                if (buttonState == 'LT1') {
+                    document.getElementById('input7').style.display = 'inline'
+                } else if (buttonState == 'LT2') {
+                    document.getElementById('input7').style.display = 'inline'
+                } else if (buttonState == 'LT3') {
+                    document.getElementById('input7').style.display = 'inline'
+                } else if (buttonState == 'LT4') {
+                    document.getElementById('input7').style.display = 'none';
+                    document.getElementById('input7').value = 'x';
+                } else if (buttonState == 'LT5') {
+                    document.getElementById('input7').style.display = 'none';
+                    document.getElementById('input7').value = 'x';
+                } else if (buttonState == 'HALL') {
+                    document.getElementById('input7').style.display = 'none';
+                    document.getElementById('input7').value = 'x';
+                }
             } else {
                 document.getElementById('location').innerHTML = `LOL is not a location, you fool!`;
             }
         }
+
+        function getAnswer() {
+            answer = '';
+            for (let i = 1; i < 17; i++) {
+                //   console.log(i);
+                answer += document.getElementById(`input${i}`).value;
+            }
+            //console.log(document.getElementById(`input1`).value)
+            //console.log(buttonState);
+            //console.log(ansLT1[0])
+            answerValidator(buttonState);
+
+        }
+
+        // Programmatically generate html input fields
+        /*
+        window.onload = function () {
+            for (let i = 0; i < 16; i++) {
+                const element = array[i];
+                
+            }
+        };
+        */
+
+        const ansLT1 = '1004xxx47d67jl64';
+        const ansLT2 = '1004xxx47d67jl64';
+        const ansLT3 = '1004xxx47d67jl64';
+        const ansLT4 = '1004xxx47d67jl64';
+        const ansLT5 = '1004xxx47d67jl64';
+        const ansHALL = '1004xxx47d67jl64';
+        // 7th char is the last x
+        function answerValidator(selector) {
+            let foo;
+            /*
+            if (digits == '2digit') {
+                limit = 15;
+            } else if (digits == '3digit') {
+                limit = 16;
+            }
+            */
+            if (selector == 'LT1') {
+                foo = ansLT1;
+                if (answer == ansLT1) {
+                    window.alert("Congratulations! Please alert your OGL!");
+                }
+            } else if (selector == 'LT2') {
+                foo = ansLT2;
+                if (answer == ansLT2) {
+                    window.alert("Congratulations! Please alert your OGL!");
+                }
+            } else if (selector == 'LT3') {
+                foo = ansLT3;
+                if (answer == ansLT3) {
+                    window.alert("Congratulations! Please alert your OGL!");
+                }
+            } else if (selector == 'LT4') {
+                foo = ansLT4;
+                if (answer == ansLT4) {
+                    window.alert("Congratulations! Please alert your OGL!");
+                }
+            } else if (selector == 'LT5') {
+                foo = ansLT5;
+                if (answer == ansLT5) {
+                    window.alert("Congratulations! Please alert your OGL!");
+                }
+            } else if (selector == 'HALL') {
+                foo = ansHALL;
+                if (answer == ansHALL) {
+                    window.alert("Congratulations! Please alert your OGL!");
+                }
+            }
+            for (let i = 0; i < 16; i++) {
+                if (foo[i] == answer[i]) {
+                    document.getElementById(`input${i + 1}`).style.backgroundColor = "white";
+                } else {
+                    document.getElementById(`input${i + 1}`).style.backgroundColor = "red";
+                }
+            }
+        }
+
 
     </script>
 
@@ -86,43 +170,40 @@
     <div id="main">
         <span id="location">Please choose your location!</span>
         <select name="mode" id="mode" onchange="checkMode()">
-            <option value="LOL">LOL</option>
+            <option value="LOL" selected>LOL</option>
             <option value="LT1">LT1</option>
             <option value="LT2">LT2</option>
             <option value="LT3">LT3</option>
             <option value="LT4">LT4</option>
             <option value="LT5">LT5</option>
             <option value="HALL">HALL</option>
-            
+
         </select>
         <br>
         <span id="time">15:00</span>
         <br>
-        <button id="button-click" onclick="iLoveJCO()">Start</button> <br>
-        <input id="input1" maxlength='1' value='' style="color:'green'">
-        <input id="input2" maxlength='1' value='' style="color:'green'">
-        <input id="input3" maxlength='1' value='' style="color:'green'">
-        <input id="input4" maxlength='1' value='' style="color:'green'">
-        <input id="input5" maxlength='1' value='' style="color:'green'">
-        <input id="input6" maxlength='1' value='' style="color:'green'">
-        <input id="input7" maxlength='1' value='' style="color:'green'">
-        <input id="input8" maxlength='1' value='' style="color:'green'">
-        <input id="input9" maxlength='1' value='' style="color:'green'">
-        <input id="input10" maxlength='1' value='' style="color:'green'">
-        <input id="input11" maxlength='1' value='' style="color:'green'">
-        <input id="input12" maxlength='1' value='' style="color:'green'">
-        <input id="input13" maxlength='1' value='' style="color:'green'">
-        <input id="input14" maxlength='1' value='' style="color:'green'">
-        <input id="input15" maxlength='1' value='' style="color:'green'">
-        <input id="input16" maxlength='1' value='' style="color:'green'">
+        <button id="button-click" onclick="iLoveJCO()" style="display: none;">Start</button> <br>
+        <input id="input1" maxlength='1' value=''>
+        <input id="input2" maxlength='1' value=''>
+        <input id="input3" maxlength='1' value=''>
+        <input id="input4" maxlength='1' value=''>
+        <input id="input5" maxlength='1' value=''>
+        <input id="input6" maxlength='1' value=''>
+        <input id="input7" maxlength='1' value=''>
+        <input id="input8" maxlength='1' value=''>
+        <input id="input9" maxlength='1' value=''>
+        <input id="input10" maxlength='1' value=''>
+        <input id="input11" maxlength='1' value=''>
+        <input id="input12" maxlength='1' value=''>
+        <input id="input13" maxlength='1' value=''>
+        <input id="input14" maxlength='1' value=''>
+        <input id="input15" maxlength='1' value=''>
+        <input id="input16" maxlength='1' value=''>
         <br>
-
+        <button id="button-click" onclick="getAnswer()">Check Answer</button> <br> <br>
         press tab for next character <br> <br>
         shift + tab for previous character
-
         <br>
-
-        <!--  <button id="button-click" onclick="getAnswer()">Get Answer</button> <br> -->
     </div>
 </body>
 
@@ -141,6 +222,7 @@
         letter-spacing: 0.5ch;
         color: green;
         outline: none;
+        text-align: center;
     }
 
     /*     input:focus {
