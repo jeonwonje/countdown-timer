@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = 0;
+                    window.alert("Time is up!");
+                }
+            }, 1000);
+
+
+        }
+
+        function iLoveJCO() {
+            var fiveMinutes = 60 * 0.1,
+                display = document.querySelector('#time');
+            startTimer(fiveMinutes, display);
+        };
+
+
+    </script>
+
+    <style>
+        #main {
+            font-size: 50px;
+            text-align: center;
+            margin-top: 200px;
+            color: green;
+            font-family: droid sans mono, consolas, monospace;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        #time {
+            font-size: 200px;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main">
+        <span id="time">00:06</span>
+        <br>
+        <button onclick="iLoveJCO()">Start</button>
+        <br>
+        <input id="input1" maxlength='15' value='morethanfifteen' style="color:'green'">
+
+    </div>
+</body>
+
+<script>
+</script>
+
+<style>
+    input {
+        display: block;
+        margin: 2em auto;
+        border: none;
+        padding: 0;
+        width: 25ch;
+        background: repeating-linear-gradient(90deg, dimgrey 0, dimgrey 1ch, transparent 0, transparent 1.5ch) 0 100%/ 22.5ch 2px no-repeat;
+        font: 2ch droid sans mono, consolas, monospace;
+        letter-spacing: 0.5ch;
+        color: green;
+        outline: none;
+    }
+
+/*     input:focus {
+        outline: none;
+        color: green;
+    } */
+
+    button {
+        border: 2px solid green;
+        padding: 10px;
+        background-color: black;
+        color: green;
+        font-size: 40px;
+    }
+</style>
+
+</html>
