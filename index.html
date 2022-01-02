@@ -9,6 +9,9 @@
         var buttonState = '';
         var answer = '';
 
+        var endAudio = new Audio('ring.mp3');
+        var goodAudio = new Audio('applause3.mp3');
+        
         function startTimer(duration, display) {
             var timer = duration, minutes, seconds;
             setInterval(function () {
@@ -22,13 +25,14 @@
 
                 if (--timer < 0) {
                     timer = 0;
+                    endAudio.play();
                     window.alert("Time is up!");
                 }
             }, 1000);
         }
 
         function iLoveJCO() {
-            var fiveMinutes = 60 * 15,
+            var fiveMinutes = 60 * 0.15,
                 display = document.querySelector('#time');
             startTimer(fiveMinutes, display);
             document.getElementById('button-click').style.display = "none";
@@ -37,6 +41,7 @@
 
         function checkMode() {
             document.getElementById('button-click').style.display = "inline-block";
+            document.getElementById('button-answer').style.display = "inline-block"
             buttonState = document.getElementById('mode').value;
             console.log(buttonState);
 
@@ -67,7 +72,7 @@
             answer = '';
             for (let i = 1; i < 17; i++) {
                 //   console.log(i);
-                answer += document.getElementById(`input${i}`).value;
+                answer += document.getElementById(`input${i}`).value.toLowerCase();
             }
             //console.log(document.getElementById(`input1`).value)
             //console.log(buttonState);
@@ -105,31 +110,37 @@
             if (selector == 'LT1') {
                 foo = ansLT1;
                 if (answer == ansLT1) {
+                    goodAudio.play();
                     window.alert("Congratulations! Please alert your OGL!");
                 }
             } else if (selector == 'LT2') {
                 foo = ansLT2;
                 if (answer == ansLT2) {
+                    goodAudio.play();
                     window.alert("Congratulations! Please alert your OGL!");
                 }
             } else if (selector == 'LT3') {
                 foo = ansLT3;
                 if (answer == ansLT3) {
+                    goodAudio.play();
                     window.alert("Congratulations! Please alert your OGL!");
                 }
             } else if (selector == 'LT4') {
                 foo = ansLT4;
                 if (answer == ansLT4) {
+                    goodAudio.play();
                     window.alert("Congratulations! Please alert your OGL!");
                 }
             } else if (selector == 'LT5') {
                 foo = ansLT5;
                 if (answer == ansLT5) {
+                    goodAudio.play();
                     window.alert("Congratulations! Please alert your OGL!");
                 }
             } else if (selector == 'HALL') {
                 foo = ansHALL;
                 if (answer == ansHALL) {
+                    goodAudio.play();
                     window.alert("Congratulations! Please alert your OGL!");
                 }
             }
@@ -200,7 +211,7 @@
         <input id="input15" maxlength='1' value=''>
         <input id="input16" maxlength='1' value=''>
         <br>
-        <button id="button-click" onclick="getAnswer()">Check Answer</button> <br> <br>
+        <button id="button-answer" onclick="getAnswer()" style="display: none;">Check Answer</button> <br> <br>
         press tab for next character <br> <br>
         shift + tab for previous character
         <br>
