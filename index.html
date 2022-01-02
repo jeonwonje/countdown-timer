@@ -29,9 +29,10 @@
         }
 
         function iLoveJCO() {
-            var fiveMinutes = 60 * 0.1,
+            var fiveMinutes = 60 * 15,
                 display = document.querySelector('#time');
             startTimer(fiveMinutes, display);
+            document.getElementById('button-click').style.display = "none";
         };
 
 
@@ -41,7 +42,7 @@
         #main {
             font-size: 50px;
             text-align: center;
-            margin-top: 200px;
+            margin-top: 100px;
             color: green;
             font-family: droid sans mono, consolas, monospace;
         }
@@ -60,12 +61,29 @@
 
 <body>
     <div id="main">
-        <span id="time">00:06</span>
+        <span id="time">15:00</span>
         <br>
-        <button onclick="iLoveJCO()">Start</button>
+        <button id="button-click" onclick="iLoveJCO()">Start</button>
         <br>
-        <input id="input1" maxlength='15' value='morethanfifteen' style="color:'green'">
+        <input id="input1" maxlength='1' value='g' style="color:'green'">
+        <input id="input1" maxlength='1' value='o' style="color:'green'">
+        <input id="input1" maxlength='1' value='o' style="color:'green'">
+        <input id="input1" maxlength='1' value='d' style="color:'green'">
+        <input id="input1" maxlength='1' value='l' style="color:'green'">
+        <input id="input1" maxlength='1' value='u' style="color:'green'">
+        <input id="input1" maxlength='1' value='c' style="color:'green'">
+        <input id="input1" maxlength='1' value='k' style="color:'green'">
+        <input id="input1" maxlength='1' value='s' style="color:'green'">
+        <input id="input1" maxlength='1' value='o' style="color:'green'">
+        <input id="input1" maxlength='1' value='l' style="color:'green'">
+        <input id="input1" maxlength='1' value='d' style="color:'green'">
+        <input id="input1" maxlength='1' value='i' style="color:'green'">
+        <input id="input1" maxlength='1' value='e' style="color:'green'">
+        <input id="input1" maxlength='1' value='r' style="color:'green'">
+<br>
 
+    press tab for next character <br>
+    shift + tab for previous character
     </div>
 </body>
 
@@ -74,12 +92,12 @@
 
 <style>
     input {
-        display: block;
+        display: inline;
         margin: 2em auto;
         border: none;
         padding: 0;
-        width: 25ch;
-        background: repeating-linear-gradient(90deg, dimgrey 0, dimgrey 1ch, transparent 0, transparent 1.5ch) 0 100%/ 22.5ch 2px no-repeat;
+        width: 2ch;
+        background: repeating-linear-gradient(90deg, dimgrey 0, dimgrey 1ch, transparent 0, transparent 1.5ch) 0 100%/ 1 2px no-repeat;
         font: 2ch droid sans mono, consolas, monospace;
         letter-spacing: 0.5ch;
         color: green;
