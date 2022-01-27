@@ -11,7 +11,7 @@
 
         var endAudio = new Audio('ring.mp3');
         var goodAudio = new Audio('applause3.mp3');
-        
+
         function startTimer(duration, display) {
             var timer = duration, minutes, seconds;
             setInterval(function () {
@@ -43,12 +43,41 @@
             document.getElementById('button-click').style.display = "inline-block";
             document.getElementById('button-answer').style.display = "inline-block"
             buttonState = document.getElementById('mode').value;
-            document.getElementById('location').innerHTML = `Your location : ${buttonState}`;
-        }
 
+            console.log(buttonState);
+
+            if (buttonState !== "LOL") {
+                document.getElementById('location').innerHTML = `Your location : ${buttonState}`;
+                if (buttonState == 'LT1') {
+                    document.getElementById('input6').value = '';
+                    document.getElementById('input6').style.display = 'inline'
+                } else if (buttonState == 'LT2') {
+                    document.getElementById('input6').value = '';
+                    document.getElementById('input6').style.display = 'inline'
+                } else if (buttonState == 'LT3') {
+                    document.getElementById('input6').value = '';
+                    document.getElementById('input6').style.display = 'inline'
+                } else if (buttonState == 'LT4') {
+                    //document.getElementById('input7').style.display = 'none';
+                    //document.getElementById('input7').value = 'x';
+                    document.getElementById('input6').value = '';
+                    document.getElementById('input6').style.display = 'inline'
+                } else if (buttonState == 'LT5') {
+                  //  document.getElementById('input7').style.display = 'none';
+                    document.getElementById('input6').value = '';
+                    document.getElementById('input6').style.display = 'inline'
+                } else if (buttonState == 'CONCOURSE') {
+                    // 15 chars
+                    document.getElementById('input6').style.display = 'none';
+                    document.getElementById('input6').value = 'x';
+                }
+            } else {
+                document.getElementById('location').innerHTML = `PLEASE REFRESH THE PAGE`;
+            }
+        }
         function getAnswer() {
             answer = '';
-            for (let i = 1; i < 17; i++) {
+            for (let i = 1; i < 16; i++) {
                 answer += document.getElementById(`input${i}`).value.toLowerCase();
             }
             answerValidator(buttonState);
@@ -65,12 +94,12 @@
         */
 
         // ANSWERS HERE
-        const ansLT1 = '1004xxx47d67jl64';
-        const ansLT2 = '100415647d67jl64';
-        const ansLT3 = '100415747d67jl64';
-        const ansLT4 = '100415447d67jl64';
-        const ansLT5 = '100437747d67jl64';
-        const ansHALL = '1004xxx47d67jl64';
+        const ansLT1 = '36428012c67jl64';
+        const ansLT2 = '36415612c67jl64';
+        const ansLT3 = '36415712c67jl64';
+        const ansLT4 = '36415412c67jl64';
+        const ansLT5 = '36437712c67jl64';
+        const ansCONCOURSE = '36449x12c67jl64';
 
         // 7th char is the last x
         function answerValidator(selector) {
@@ -105,14 +134,14 @@
                     goodAudio.play();
                     window.alert("Congratulations! Please alert your OGL!");
                 }
-            } else if (selector == 'HALL') {
-                foo = ansHALL;
-                if (answer == ansHALL) {
+            } else if (selector == 'CONCOURSE') {
+                foo = ansCONCOURSE;
+                if (answer == ansCONCOURSE) {
                     goodAudio.play();
                     window.alert("Congratulations! Please alert your OGL!");
                 }
             }
-            for (let i = 0; i < 16; i++) {
+            for (let i = 0; i < 15; i++) {
                 if (foo[i] == answer[i]) {
                     document.getElementById(`input${i + 1}`).style.backgroundColor = "white";
                 } else {
@@ -142,31 +171,31 @@
         }
 
         input {
-        display: inline;
-        margin: 1em auto;
-        border: none;
-        padding: 0;
-        width: 1.4ch;
-        /* background: repeating-linear-gradient(90deg, dimgrey 0, dimgrey 1ch, transparent 0, transparent 1.5ch) 0 100%/ 1 2px no-repeat; */
-        font-size: 2ch;
-        color: green;
-        outline: none;
-        text-align: center;
-    }
+            display: inline;
+            margin: 1em auto;
+            border: none;
+            padding: 0;
+            width: 1.4ch;
+            /* background: repeating-linear-gradient(90deg, dimgrey 0, dimgrey 1ch, transparent 0, transparent 1.5ch) 0 100%/ 1 2px no-repeat; */
+            font-size: 2ch;
+            color: green;
+            outline: none;
+            text-align: center;
+        }
 
-    /*     input:focus {
+        /*     input:focus {
         outline: none;
         color: green;
     } */
 
-    button {
-        border: 2px solid green;
-        padding: 10px;
-        background-color: black;
-        color: green;
-        font-size: 40px;
-        font-family: Consolas, Courier, monospace;
-    }
+        button {
+            border: 2px solid green;
+            padding: 10px;
+            background-color: black;
+            color: green;
+            font-size: 40px;
+            font-family: Consolas, Courier, monospace;
+        }
     </style>
 
     <title>Document</title>
@@ -181,7 +210,7 @@
             <option value="LT3">LT3</option>
             <option value="LT4">LT4</option>
             <option value="LT5">LT5</option>
-            <option value="HALL">HALL</option>
+            <option value="CONCOURSE">CONCOURSE</option>
 
         </select>
         <br>
@@ -203,9 +232,11 @@
         <input id="input13" maxlength='1' value=''>
         <input id="input14" maxlength='1' value=''>
         <input id="input15" maxlength='1' value=''>
-        <input id="input16" maxlength='1' value=''>
         <br>
         <button id="button-answer" onclick="getAnswer()" style="display: none;">Check Answer</button>
+        <p style="font-size: medium;">
+            Fill all fields before checking your answer!
+        </p>
     </div>
 </body>
 
